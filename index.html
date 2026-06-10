@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio personal de análisis de datos de Gabo. Proyectos en SQL, Power BI y Excel.">
+    <title>Gabo | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <div class="logo">Gabo<span>.Data</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">Sobre Mí</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <h1>Transformando Datos en Decisiones</h1>
+                    <p>Especialista en SQL, Power BI y Excel</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h1>Visualizaciones de Impacto</h1>
+                    <p>Descubre historias ocultas en los números con Power BI</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h1>Análisis Preciso y Profundo</h1>
+                    <p>Modelado de datos complejos con SQL y Excel</p>
+                </div>
+            </div>
+            
+            <button class="carousel-btn prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>¡Hola! Soy un Analista de Datos apasionado por descubrir patrones y contar historias a través de los datos. Mi objetivo es ayudar a las organizaciones a tomar decisiones estratégicas basadas en información precisa y visualizaciones impactantes.</p>
+                    <p>Tengo experiencia sólida trabajando con herramientas como <strong>Excel, Power BI y SQL</strong>, transformando bases de datos complejas en dashboards interactivos e insights accionables.</p>
+                    <div class="skills">
+                        <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                        <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
+                        <span class="skill-tag"><i class="fas fa-brain"></i> Análisis de Datos</span>
+                    </div>
+                </div>
+                <div class="about-image-placeholder">
+                    <!-- Placeholder for user's photo -->
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Mis Proyectos</h2>
+            <div class="projects-grid">
+                <!-- Project: Mundial (Blog) -->
+                <div class="project-card">
+                    <div class="project-img sql-bg" style="background: url('projects/proyecto-mundial/image.png') center/cover;">
+                        <i class="fas fa-globe" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 50%;"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Data Analysis</span>
+                        <h3>Análisis Mundial de Fútbol</h3>
+                        <p>Limpieza y normalización de 22 bases de datos para analizar el rendimiento de equipos a nivel global.</p>
+                        <a href="blog.html?post=projects/proyecto-mundial/Proyecto_mundial.md" class="btn-outline">Leer Artículo <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 1: SQL -->
+                <div class="project-card">
+                    <div class="project-img sql-bg">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">SQL</span>
+                        <h3>Optimización de Consultas</h3>
+                        <p>Análisis de millones de registros para optimizar el rendimiento de consultas y generar reportes analíticos.</p>
+                        <a href="#" class="btn-outline">Ver Proyecto</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Power BI -->
+                <div class="project-card">
+                    <div class="project-img pbi-bg">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Power BI</span>
+                        <h3>Dashboard Interactivo</h3>
+                        <p>Visualización interactiva de métricas clave (KPIs) para monitorear el desempeño general del negocio.</p>
+                        <a href="#" class="btn-outline">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Excel -->
+                <div class="project-card">
+                    <div class="project-img excel-bg">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Excel</span>
+                        <h3>Modelo de Datos Predictivo</h3>
+                        <p>Uso de fórmulas avanzadas y tablas dinámicas para proyectar y modelar diferentes escenarios.</p>
+                        <a href="#" class="btn-outline">Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;">Contáctame</h2>
+            <p>¿Interesado en colaborar o aprender más sobre mis proyectos?</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/victor-delaluz/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:gabrieldelaluzmendoza@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 2rem; color: #94a3b8; font-size: 0.9rem;">&copy; 2026 Gabo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

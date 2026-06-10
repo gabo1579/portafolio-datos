@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabo | Proyecto Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Marked.js para convertir Markdown a HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        .blog-container {
+            max-width: 900px;
+            margin: 120px auto 50px auto;
+            padding: 40px;
+            background: var(--surface-color);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .blog-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: white;
+        }
+
+        /* Estilos Markdown */
+        #markdown-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #markdown-content h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-main);
+        }
+
+        #markdown-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: #cbd5e1;
+        }
+
+        #markdown-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        #markdown-content ul, #markdown-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        #markdown-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        #markdown-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        #markdown-content strong {
+            color: white;
+        }
+        
+        #loading {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <nav class="navbar">
+        <div class="logo">Gabo<span>.Data</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Inicio</a></li>
+            <li><a href="index.html#projects">Proyectos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <article class="blog-container">
+            <div class="blog-header">
+                <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Volver a Proyectos</a>
+            </div>
+            
+            <div id="loading">Cargando proyecto... <i class="fas fa-spinner fa-spin"></i></div>
+            <div id="markdown-content" style="display: none;"></div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 Gabo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Cargar partículas
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS("particles-js", {
+                "particles": { "number": { "value": 60 }, "color": { "value": "#3b82f6" }, "opacity": { "value": 0.3 }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#8b5cf6", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1.5 } }
+            });
+        }
+
+        // Lógica del Blog
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postPath = urlParams.get('post');
+            const markdownContainer = document.getElementById('markdown-content');
+            const loading = document.getElementById('loading');
+
+            if (!postPath) {
+                loading.textContent = "Error: No se especificó ningún proyecto a cargar.";
+                return;
+            }
+
+            try {
+                const response = await fetch(postPath);
+                if (!response.ok) {
+                    throw new Error("No se pudo cargar el archivo " + postPath);
+                }
+                
+                const markdownText = await response.text();
+                
+                // Extraer el directorio del archivo .md para ajustar las rutas de las imágenes
+                const basePath = postPath.substring(0, postPath.lastIndexOf('/') + 1);
+                
+                // Parsear Markdown
+                let htmlContent = marked.parse(markdownText);
+                
+                // Ajustar rutas de imágenes para que apunten a la carpeta correcta
+                htmlContent = htmlContent.replace(/<img src="([^"]+)"/g, (match, src) => {
+                    if (!src.startsWith('http')) {
+                        // Decodificar la URL para manejar espacios (%20) correctamente
+                        return `<img src="${basePath}${decodeURIComponent(src)}"`;
+                    }
+                    return match;
+                });
+
+                markdownContainer.innerHTML = htmlContent;
+                loading.style.display = 'none';
+                markdownContainer.style.display = 'block';
+            } catch (error) {
+                loading.textContent = "Error cargando el proyecto: " + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
