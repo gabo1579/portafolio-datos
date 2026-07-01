@@ -22,7 +22,7 @@ After a brief conversation, we defined five core needs:
 
 I chose a deliberately simple and zero-cost architecture that any small business can replicate:
 
-![Architecture Diagram](C:/Users/gabo_/.gemini/antigravity/brain/79bca18d-8a92-4b7d-9ccb-8ccdfbfa4b2e/architecture_diagram_1782863033519.png)
+![Architecture Diagram](architecture_diagram.png)
 
 | Layer | Technology | Cost |
 |-------|-----------|------|
@@ -68,7 +68,7 @@ The main dashboard presents a **weekly calendar** view showing Monday through Su
 
 The current day is highlighted with a blue border so the delivery person always knows where to look first.
 
-![Weekly Delivery Calendar](C:/Users/gabo_/.gemini/antigravity/brain/79bca18d-8a92-4b7d-9ccb-8ccdfbfa4b2e/calendar_view_1782862999223.png)
+![Weekly Delivery Calendar](calendar_view.png)
 
 ---
 
@@ -83,7 +83,7 @@ The inventory screen shows a responsive grid of all 49 national team jerseys (th
 
 There's also a **search bar** for quickly finding a specific team and a **"+ Nuevo Producto"** button to add new items that aren't in the original list.
 
-![Inventory Management](C:/Users/gabo_/.gemini/antigravity/brain/79bca18d-8a92-4b7d-9ccb-8ccdfbfa4b2e/inventory_view_1782863006930.png)
+![Inventory Management](inventory_view.png)
 
 ---
 
@@ -96,7 +96,7 @@ The sale form is designed for speed — since most sales come through WhatsApp o
 - **Automatic inventory deduction** — when a sale is registered, the stock counts update immediately in the database
 - All fields are validated before submission
 
-![New Sale Form](C:/Users/gabo_/.gemini/antigravity/brain/79bca18d-8a92-4b7d-9ccb-8ccdfbfa4b2e/new_sale_view_1782863013508.png)
+![New Sale Form](new_sale_view.png)
 
 ---
 
@@ -109,7 +109,7 @@ A complete, sortable table showing every sale ever registered. Each row displays
 
 This gives the business owner a clear picture of revenue and outstanding deliveries at any time.
 
-![Sales History](C:/Users/gabo_/.gemini/antigravity/brain/79bca18d-8a92-4b7d-9ccb-8ccdfbfa4b2e/history_view_1782863020421.png)
+![Sales History](history_view.png)
 
 ---
 
