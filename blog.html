@@ -108,26 +108,33 @@
 
     <nav class="navbar">
         <div class="logo">Gabo<span>.Data</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html#home">Inicio</a></li>
-            <li><a href="index.html#projects">Proyectos</a></li>
-        </ul>
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <ul class="nav-links">
+                <li><a href="index.html#home" data-i18n="nav-home">Inicio</a></li>
+                <li><a href="index.html#projects" data-i18n="nav-projects">Proyectos</a></li>
+            </ul>
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="pt">PT</button>
+            </div>
+        </div>
     </nav>
 
     <div class="container">
         <article class="blog-container">
             <div class="blog-header">
-                <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Volver a Proyectos</a>
+                <a href="index.html#projects" class="back-btn" id="back-btn-text"><i class="fas fa-arrow-left"></i> Volver a Proyectos</a>
             </div>
             
-            <div id="loading">Cargando proyecto... <i class="fas fa-spinner fa-spin"></i></div>
+            <div id="loading" data-i18n="blog-loading">Cargando proyecto... <i class="fas fa-spinner fa-spin"></i></div>
             <div id="markdown-content" style="display: none;"></div>
         </article>
     </div>
 
     <footer>
         <div class="container">
-            <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 Gabo. Todos los derechos reservados.</p>
+            <p style="color: #94a3b8; font-size: 0.9rem;" data-i18n="footer-copy">&copy; 2026 Gabo. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -140,47 +147,119 @@
             });
         }
 
+        // Traducciones básicas de la interfaz del Blog
+        const blogTranslations = {
+            es: {
+                "nav-home": "Inicio",
+                "nav-projects": "Proyectos",
+                "blog-loading": "Cargando proyecto... <i class=\"fas fa-spinner fa-spin\"></i>",
+                "blog-back": "<i class=\"fas fa-arrow-left\"></i> Volver a Proyectos",
+                "blog-error": "Error cargando el proyecto: ",
+                "footer-copy": "&copy; 2026 Gabo. Todos los derechos reservados."
+            },
+            en: {
+                "nav-home": "Home",
+                "nav-projects": "Projects",
+                "blog-loading": "Loading project... <i class=\"fas fa-spinner fa-spin\"></i>",
+                "blog-back": "<i class=\"fas fa-arrow-left\"></i> Back to Projects",
+                "blog-error": "Error loading project: ",
+                "footer-copy": "&copy; 2026 Gabo. All rights reserved."
+            },
+            pt: {
+                "nav-home": "Início",
+                "nav-projects": "Projetos",
+                "blog-loading": "Carregando projeto... <i class=\"fas fa-spinner fa-spin\"></i>",
+                "blog-back": "<i class=\"fas fa-arrow-left\"></i> Voltar para Projetos",
+                "blog-error": "Erro ao carregar o projeto: ",
+                "footer-copy": "&copy; 2026 Gabo. Todos os direitos reservados."
+            }
+        };
+
         // Lógica del Blog
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const postPath = urlParams.get('post');
+            const basePostPath = urlParams.get('post');
             const markdownContainer = document.getElementById('markdown-content');
             const loading = document.getElementById('loading');
+            const backBtnText = document.getElementById('back-btn-text');
 
-            if (!postPath) {
+            if (!basePostPath) {
                 loading.textContent = "Error: No se especificó ningún proyecto a cargar.";
                 return;
             }
 
-            try {
-                const response = await fetch(postPath);
-                if (!response.ok) {
-                    throw new Error("No se pudo cargar el archivo " + postPath);
-                }
+            async function loadMarkdown(lang) {
+                loading.style.display = 'block';
+                markdownContainer.style.display = 'none';
                 
-                const markdownText = await response.text();
-                
-                // Extraer el directorio del archivo .md para ajustar las rutas de las imágenes
-                const basePath = postPath.substring(0, postPath.lastIndexOf('/') + 1);
-                
-                // Parsear Markdown
-                let htmlContent = marked.parse(markdownText);
-                
-                // Ajustar rutas de imágenes para que apunten a la carpeta correcta
-                htmlContent = htmlContent.replace(/<img src="([^"]+)"/g, (match, src) => {
-                    if (!src.startsWith('http')) {
-                        // Decodificar la URL para manejar espacios (%20) correctamente
-                        return `<img src="${basePath}${decodeURIComponent(src)}"`;
+                // Actualizar interfaz del blog
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (blogTranslations[lang] && blogTranslations[lang][key]) {
+                        el.innerHTML = blogTranslations[lang][key];
                     }
-                    return match;
+                });
+                backBtnText.innerHTML = blogTranslations[lang]["blog-back"];
+
+                const postPath = `${basePostPath}_${lang}.md`;
+
+                try {
+                    const response = await fetch(postPath);
+                    if (!response.ok) {
+                        throw new Error("No se pudo cargar el archivo " + postPath);
+                    }
+                    
+                    const markdownText = await response.text();
+                    
+                    // Extraer el directorio del archivo .md para ajustar las rutas de las imágenes
+                    const basePath = postPath.substring(0, postPath.lastIndexOf('/') + 1);
+                    
+                    // Parsear Markdown
+                    let htmlContent = marked.parse(markdownText);
+                    
+                    // Ajustar rutas de imágenes para que apunten a la carpeta correcta
+                    htmlContent = htmlContent.replace(/<img src="([^"]+)"/g, (match, src) => {
+                        if (!src.startsWith('http') && !src.startsWith('/')) {
+                            // Decodificar la URL para manejar espacios (%20) correctamente
+                            return `<img src="${basePath}${decodeURIComponent(src)}"`;
+                        }
+                        return match;
+                    });
+
+                    markdownContainer.innerHTML = htmlContent;
+                    loading.style.display = 'none';
+                    markdownContainer.style.display = 'block';
+                } catch (error) {
+                    loading.innerHTML = (blogTranslations[lang]["blog-error"] || "Error: ") + error.message;
+                }
+            }
+
+            function setLanguage(lang) {
+                localStorage.setItem('portfolio-lang', lang);
+                
+                // Actualizar botones de idioma activo
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
                 });
 
-                markdownContainer.innerHTML = htmlContent;
-                loading.style.display = 'none';
-                markdownContainer.style.display = 'block';
-            } catch (error) {
-                loading.textContent = "Error cargando el proyecto: " + error.message;
+                loadMarkdown(lang);
             }
+
+            // Registrar eventos de cambio de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+
+            // Inicializar con el idioma guardado o español
+            const initialLang = localStorage.getItem('portfolio-lang') || 'es';
+            setLanguage(initialLang);
         });
     </script>
 </body>

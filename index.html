@@ -13,32 +13,39 @@
     <div id="particles-js"></div>
     <nav class="navbar">
         <div class="logo">Gabo<span>.Data</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#about">Sobre Mí</a></li>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav-home">Inicio</a></li>
+                <li><a href="#about" data-i18n="nav-about">Sobre Mí</a></li>
+                <li><a href="#projects" data-i18n="nav-projects">Proyectos</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
+            </ul>
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="pt">PT</button>
+            </div>
+        </div>
     </nav>
 
     <header id="home" class="hero">
         <div class="carousel-container">
             <div class="carousel-slide active">
                 <div class="carousel-content">
-                    <h1>Transformando Datos en Decisiones</h1>
-                    <p>Especialista en SQL, Power BI y Excel</p>
+                    <h1 data-i18n="hero-1-title">Transformando Datos en Decisiones</h1>
+                    <p data-i18n="hero-1-sub">Especialista en SQL, Power BI y Excel</p>
                 </div>
             </div>
             <div class="carousel-slide">
                 <div class="carousel-content">
-                    <h1>Visualizaciones de Impacto</h1>
-                    <p>Descubre historias ocultas en los números con Power BI</p>
+                    <h1 data-i18n="hero-2-title">Visualizaciones de Impacto</h1>
+                    <p data-i18n="hero-2-sub">Descubre historias ocultas en los números con Power BI</p>
                 </div>
             </div>
             <div class="carousel-slide">
                 <div class="carousel-content">
-                    <h1>Análisis Preciso y Profundo</h1>
-                    <p>Modelado de datos complejos con SQL y Excel</p>
+                    <h1 data-i18n="hero-3-title">Análisis Preciso y Profundo</h1>
+                    <p data-i18n="hero-3-sub">Modelado de datos complejos con SQL y Excel</p>
                 </div>
             </div>
             
@@ -49,16 +56,16 @@
 
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
+            <h2 class="section-title" data-i18n="about-title">Sobre Mí</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>¡Hola! Soy un Analista de Datos apasionado por descubrir patrones y contar historias a través de los datos. Mi objetivo es ayudar a las organizaciones a tomar decisiones estratégicas basadas en información precisa y visualizaciones impactantes.</p>
-                    <p>Tengo experiencia sólida trabajando con herramientas como <strong>Excel, Power BI y SQL</strong>, transformando bases de datos complejas en dashboards interactivos e insights accionables.</p>
+                    <p data-i18n="about-text-1">¡Hola! Soy un Analista de Datos apasionado por descubrir patrones y contar historias a través de los datos. Mi objetivo es ayudar a las organizaciones a tomar decisiones estratégicas basadas en información precisa y visualizaciones impactantes.</p>
+                    <p data-i18n="about-text-2">Tengo experiencia sólida trabajando con herramientas como <strong>Excel, Power BI y SQL</strong>, transformando bases de datos complejas en dashboards interactivos e insights accionables.</p>
                     <div class="skills">
-                        <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
-                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-                        <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
-                        <span class="skill-tag"><i class="fas fa-brain"></i> Análisis de Datos</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> <span data-i18n="skill-sql">SQL</span></span>
+                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> <span data-i18n="skill-pbi">Power BI</span></span>
+                        <span class="skill-tag"><i class="fas fa-file-excel"></i> <span data-i18n="skill-excel">Excel</span></span>
+                        <span class="skill-tag"><i class="fas fa-brain"></i> <span data-i18n="skill-data-analysis">Análisis de Datos</span></span>
                     </div>
                 </div>
                 <div class="about-image-placeholder">
@@ -71,73 +78,73 @@
 
     <section id="projects" class="projects-section">
         <div class="container">
-            <h2 class="section-title">Mis Proyectos</h2>
+            <h2 class="section-title" data-i18n="projects-title">Mis Proyectos</h2>
             <div class="projects-grid">
                 <!-- Project: Mundial (Blog) -->
-                <div class="project-card">
+                <a href="blog.html?post=projects/proyecto-mundial/Proyecto_mundial" class="project-card">
                     <div class="project-img sql-bg" style="background: url('projects/proyecto-mundial/image.png') center/cover;">
                         <i class="fas fa-globe" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 50%;"></i>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">Data Analysis</span>
-                        <h3>Análisis Mundial de Fútbol</h3>
-                        <p>Limpieza y normalización de 22 bases de datos para analizar el rendimiento de equipos a nivel global.</p>
-                        <a href="blog.html?post=projects/proyecto-mundial/Proyecto_mundial.md" class="btn-outline">Leer Artículo <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
+                        <span class="project-category" data-i18n="proj-1-cat">Análisis de Datos</span>
+                        <h3 data-i18n="proj-1-title">Análisis Mundial de Fútbol</h3>
+                        <p data-i18n="proj-1-desc">Limpieza y normalización de 22 bases de datos para analizar el rendimiento de equipos a nivel global.</p>
+                        <span class="btn-outline" data-i18n="proj-btn-read">Leer Artículo <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 1: SQL -->
-                <div class="project-card">
+                <!-- Project: CRM VENTAS -->
+                <a href="blog.html?post=projects/crm-mundial/project_writeup" class="project-card">
+                    <div class="project-img pbi-bg" style="background: url('projects/crm-mundial/architecture_diagram.png') center/cover;">
+                        <i class="fas fa-server" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 50%;"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category" data-i18n="proj-2-cat">Desarrollo con IA</span>
+                        <h3 data-i18n="proj-2-title">CRM en Tiempo Real con IA</h3>
+                        <p data-i18n="proj-2-desc">CRM ligero para un pequeño negocio, construido con Firebase y GitHub Pages, desarrollado junto a un asistente de IA.</p>
+                        <span class="btn-outline" data-i18n="proj-btn-read">Leer Artículo <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
+                    </div>
+                </a>
+
+                <!-- Project 3: SQL Query Optimization -->
+                <a href="#" class="project-card" onclick="event.preventDefault();">
                     <div class="project-img sql-bg">
                         <i class="fas fa-database"></i>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">SQL</span>
-                        <h3>Optimización de Consultas</h3>
-                        <p>Análisis de millones de registros para optimizar el rendimiento de consultas y generar reportes analíticos.</p>
-                        <a href="#" class="btn-outline">Ver Proyecto</a>
+                        <span class="project-category" data-i18n="proj-3-cat">SQL</span>
+                        <h3 data-i18n="proj-3-title">Optimización de Consultas</h3>
+                        <p data-i18n="proj-3-desc">Análisis de millones de registros para optimizar el rendimiento de consultas y generar reportes analíticos.</p>
+                        <span class="btn-outline" data-i18n="proj-btn-view">Ver Proyecto <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
                     </div>
-                </div>
-                
-                <!-- Project 2: CRM VENTAS -->
-                <div class="project-card">
-    <div class="project-img pbi-bg" style="background: url('projects/crm-mundial/architecture_diagram.png') center/cover;">
-        <i class="fas fa-server" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 50%;"></i>
-    </div>
-    <div class="project-info">
-        <span class="project-category">AI Development</span>
-        <h3>CRM en Tiempo Real con IA</h3>
-        <p>CRM ligero para un pequeño negocio, construido con Firebase y GitHub Pages, desarrollado junto a un asistente de IA.</p>
-        <a href="blog.html?post=projects/crm-mundial/project_writeup.md" class="btn-outline">Leer Artículo <i class="fas fa-arrow-right"></i></a>
-    </div>
-</div>
+                </a>
 
-                <!-- Project 3: Excel -->
-                <div class="project-card">
+                <!-- Project 4: Excel Model -->
+                <a href="#" class="project-card" onclick="event.preventDefault();">
                     <div class="project-img excel-bg">
                         <i class="fas fa-file-excel"></i>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">Excel</span>
-                        <h3>Modelo de Datos Predictivo</h3>
-                        <p>Uso de fórmulas avanzadas y tablas dinámicas para proyectar y modelar diferentes escenarios.</p>
-                        <a href="#" class="btn-outline">Ver Proyecto</a>
+                        <span class="project-category" data-i18n="proj-4-cat">Excel</span>
+                        <h3 data-i18n="proj-4-title">Modelo de Datos Predictivo</h3>
+                        <p data-i18n="proj-4-desc">Uso de fórmulas avanzadas y tablas dinámicas para proyectar y modelar diferentes escenarios.</p>
+                        <span class="btn-outline" data-i18n="proj-btn-view">Ver Proyecto <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
     <footer id="contact">
         <div class="container">
-            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;">Contáctame</h2>
-            <p>¿Interesado en colaborar o aprender más sobre mis proyectos?</p>
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;" data-i18n="contact-title">Contáctame</h2>
+            <p data-i18n="contact-desc">¿Interesado en colaborar o aprender más sobre mis proyectos?</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/victor-delaluz/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="mailto:gabrieldelaluzmendoza@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
-            <p style="margin-top: 2rem; color: #94a3b8; font-size: 0.9rem;">&copy; 2026 Gabo. Todos los derechos reservados.</p>
+            <p style="margin-top: 2rem; color: #94a3b8; font-size: 0.9rem;" data-i18n="footer-copy">&copy; 2026 Gabo. Todos los derechos reservados.</p>
         </div>
     </footer>
 
