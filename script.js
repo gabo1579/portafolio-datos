@@ -252,12 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function setLanguage(lang) {
         localStorage.setItem('portfolio-lang', lang);
         
-        // Update language buttons active class
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('active');
+        // Flag URLs for current selection
+        const flags = {
+            es: "https://flagcdn.com/w40/mx.png",
+            en: "https://flagcdn.com/w40/us.png",
+            pt: "https://flagcdn.com/w40/br.png"
+        };
+
+        // Update dropdown trigger elements
+        const currentFlag = document.getElementById('current-lang-flag');
+        const currentText = document.getElementById('current-lang-text');
+        if (currentFlag) currentFlag.src = flags[lang];
+        if (currentText) currentText.textContent = lang.toUpperCase();
+
+        // Update active class on menu items
+        document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+            if (item.getAttribute('data-lang') === lang) {
+                item.classList.add('active');
             } else {
-                btn.classList.remove('active');
+                item.classList.remove('active');
             }
         });
 
@@ -270,11 +283,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Attach click listeners to language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
+    // Toggle Dropdown Menu
+    const trigger = document.getElementById('langDropdownTrigger');
+    const menu = document.getElementById('langDropdownMenu');
+
+    if (trigger && menu) {
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+    }
+
+    // Attach click listeners to language dropdown items
+    document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const lang = item.getAttribute('data-lang');
             setLanguage(lang);
+            if (menu) menu.classList.remove('show');
         });
     });
 

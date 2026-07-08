@@ -20,10 +20,23 @@
                 <li><a href="#projects" data-i18n="nav-projects">Proyectos</a></li>
                 <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
             </ul>
-            <div class="lang-selector">
-                <button class="lang-btn active" data-lang="es">ES</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="pt">PT</button>
+            <div class="lang-dropdown">
+                <button class="lang-dropdown-trigger" id="langDropdownTrigger">
+                    <img src="https://flagcdn.com/w40/mx.png" id="current-lang-flag" alt="Flag">
+                    <span id="current-lang-text">ES</span>
+                    <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 0.2rem;"></i>
+                </button>
+                <div class="lang-dropdown-menu" id="langDropdownMenu">
+                    <div class="lang-dropdown-item active" data-lang="es">
+                        <img src="https://flagcdn.com/w40/mx.png" alt="MX"> <span>Español (MX)</span>
+                    </div>
+                    <div class="lang-dropdown-item" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" alt="US"> <span>English (US)</span>
+                    </div>
+                    <div class="lang-dropdown-item" data-lang="pt">
+                        <img src="https://flagcdn.com/w40/br.png" alt="BR"> <span>Português (BR)</span>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -68,9 +81,12 @@
                         <span class="skill-tag"><i class="fas fa-brain"></i> <span data-i18n="skill-data-analysis">Análisis de Datos</span></span>
                     </div>
                 </div>
-                <div class="about-image-placeholder">
-                    <!-- Placeholder for user's photo -->
-                    <i class="fas fa-user-tie"></i>
+                <div class="about-image-container" style="position: relative; height: 400px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <img src="projects/profile/profile.jpg" alt="Gabo Photo" onerror="this.style.display='none'; document.getElementById('profile-fallback').style.display='flex';" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px; z-index: 2; position: absolute; top:0; left:0;">
+                    <div class="about-image-placeholder" id="profile-fallback" style="display: flex; height: 100%; width: 100%; align-items: center; justify-content: center; z-index: 1;">
+                        <!-- Placeholder for user's photo -->
+                        <i class="fas fa-user-tie"></i>
+                    </div>
                 </div>
             </div>
         </div>
