@@ -10,17 +10,17 @@ Este banco de dados é composto por 23 conjuntos de dados (datasets).
 ### Acumulado dos 22 Datasets
 Acumulamos os 22 datasets históricos, normalizamos a estrutura e limpamos as informações para consolidar uma única fonte de verdade.
 
-![Consolidação](image 1.png)
+![Consolidação](image_1.png)
 
 ### Processo de Limpeza
 Removemos registros duplicados, corrigimos inconsistências nos nomes dos países e padronizamos formatos de datas.
 
-![Limpeza](image 2.png)
+![Limpeza](image_2.png)
 
 ### Normalização de Dados
 Removi colunas desnecessárias e criei uma nova coluna calculada para ter o ano de referência de cada Copa do Mundo de forma homogênea.
 
-![Normalização](image 3.png)
+![Normalização](image_3.png)
 
 ### Análise e Consultas no MySQL Workbench
 Depois, carreguei meus dados limpos no MySQL Workbench para transformá-los e realizar uma sessão de brainstorming sobre as seguintes perguntas-chave de negócios:

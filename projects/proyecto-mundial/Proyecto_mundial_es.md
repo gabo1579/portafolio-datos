@@ -10,17 +10,17 @@ Esta base de datos se compone de 23 conjuntos de datos (datasets).
 ### Acumulado de los 22 Datasets
 Acumulamos los 22 datasets históricos, normalizamos la estructura y limpiamos la información para consolidar una única fuente de verdad.
 
-![Consolidación](image 1.png)
+![Consolidación](image_1.png)
 
 ### Proceso de Limpieza
 Eliminamos registros duplicados, corregimos inconsistencias en nombres de países y estandarizamos formatos de fechas.
 
-![Limpieza](image 2.png)
+![Limpieza](image_2.png)
 
 ### Normalización de Datos
 Removí columnas innecesarias y creé una nueva columna calculada para tener el año de referencia de cada mundial de forma homogénea.
 
-![Normalización](image 3.png)
+![Normalización](image_3.png)
 
 ### Análisis y Consultas en MySQL Workbench
 Luego, cargué mis datos limpios en MySQL Workbench para transformarlos y realizar una sesión de lluvia de ideas (brainstorming) sobre las siguientes preguntas clave de negocio:

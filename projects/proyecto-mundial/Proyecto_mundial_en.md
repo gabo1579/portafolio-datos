@@ -10,17 +10,17 @@ This database consists of 23 datasets.
 ### Accumulating the 22 Datasets
 We accumulated the 22 historical datasets, normalized their structure, and cleaned the information to consolidate a single source of truth.
 
-![Consolidation](image 1.png)
+![Consolidation](image_1.png)
 
 ### Cleaning Process
 We removed duplicate records, corrected inconsistencies in country names, and standardized date formats.
 
-![Cleaning](image 2.png)
+![Cleaning](image_2.png)
 
 ### Data Normalization
 I removed unnecessary columns and created a new calculated column to have a homogeneous reference year for each World Cup.
 
-![Normalization](image 3.png)
+![Normalization](image_3.png)
 
 ### Analysis and Queries in MySQL Workbench
 Next, I loaded my clean data into MySQL Workbench to transform it and brainstorm around the following key business questions:
